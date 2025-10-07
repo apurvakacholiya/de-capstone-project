@@ -1,0 +1,24 @@
+# .env files (ignore environment variables)
+.env
+.env.local
+.env.*.local
+
+
+# Log files
+*.log
+
+# Build directories
+dist/
+build/
+
+# IDE and editor files
+.vscode/
+.idea/
+
+# Python (if applicable)
+__pycache__/
+*.pyc
+*.pyo
+
+# Others
+*.swp
