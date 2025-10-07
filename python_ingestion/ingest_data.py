@@ -26,10 +26,10 @@ def get_snowflake_connection():
             database=SNOWFLAKE_DATABASE,
             schema=SNOWFLAKE_SCHEMA
         )
-        print("✅ Connected to Snowflake successfully!")
+        print("Connected to Snowflake successfully!")
         return conn
     except Exception as e:
-        print("❌ Error connecting to Snowflake:", e)
+        print("Error connecting to Snowflake:", e)
         exit(1)
 
 
@@ -37,7 +37,7 @@ def fetch_data(url):
     print(f"Fetching data from {url}...")
     response = requests.get(url)
     if response.status_code == 200:
-        print("✅ Data fetched successfully!")
+        print("Data fetched successfully!")
         return response.json()
     else:
         raise Exception(f"Failed to fetch data. Status code: {response.status_code}")
@@ -56,10 +56,10 @@ def load_to_snowflake(conn, table_name, data):
             )
 
         conn.commit()
-        print(f"✅ Loaded {len(data)} records into {table_name}!")
+        print(f"Loaded {len(data)} records into {table_name}!")
         cur.close()
     except Exception as e:
-        print(f"❌ Error loading data into {table_name}: {e}")
+        print(f"Error loading data into {table_name}: {e}")
 
 def main():
  
@@ -74,7 +74,7 @@ def main():
     load_to_snowflake(conn, "COMMENTS", comments_data)
 
     conn.close()
-    print("🎉 Data ingestion completed successfully!")
+    print("Data ingestion completed successfully!")
 
 if __name__ == "__main__":
     main()
