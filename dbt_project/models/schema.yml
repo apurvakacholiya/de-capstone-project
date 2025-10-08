@@ -1,0 +1,31 @@
+version: 2
+
+sources:
+  - name: raw_data
+    database: USER_ACTIVITY_DB
+    schema: RAW_DATA
+    tables:
+      - name: posts
+      - name: comments
+
+models:
+  - name: stg_posts
+    description: "Staging model for posts"
+    columns:
+      - name: post_id
+        tests:
+          - not_null
+          - unique
+  - name: stg_comments
+    description: "Staging model for comments"
+    columns:
+      - name: comment_id
+        tests:
+          - not_null
+          - unique
+  - name: fct_posts
+    description: "Fact table joining posts and comment counts"
+    columns:
+      - name: post_id
+        tests:
+          - not_null
